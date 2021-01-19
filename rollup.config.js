@@ -22,12 +22,11 @@ const node = '10';
 const external = [];
 
 const datetime = new Date().toISOString().substring(0, 19).replace('T', ' ');
-const year = datetime.substring(0, 4);
 
 // Banner.
 const banner = `/*! ${pkg.name} v${pkg.version} ${datetime}
  *  ${pkg.homepage}
- *  Copyright ${year} ${pkg.author} ${pkg.license} license.
+ *  Copyright ${pkg.author} ${pkg.license} license.
  */
 `;
 

@@ -1,9 +1,18 @@
 {
   "name": "boilerplate-module",
   "version": "0.1.0-dev",
-  "description": "",
-  "homepage": "",
-  "keywords": [],
+  "description": "Boilerplate for a JavaScript module (browser + node).",
+  "keywords": [
+    "boilerplate"
+  ],
+  "homepage": "https://github.com/user/repo",
+  "bugs": "https://github.com/user/repo/issues",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:user/repo.git"
+  },
+  "author": "My Name (http://github.com/user)",
+  "license": "MIT",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "browser": "dist/boilerplate-module.min.js",
@@ -12,12 +21,6 @@
     "lint:fix": "eslint . --fix && prettier . --write",
     "test": "jest test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:user/repo.git"
-  },
-  "author": "",
-  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
@@ -32,7 +35,6 @@
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
     "rollup": "^2.36.1",
-    "rollup-plugin-terser": "^7.0.2",
-    "test": "^0.6.0"
+    "rollup-plugin-terser": "^7.0.2"
   }
 }
