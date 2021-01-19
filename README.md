@@ -4,7 +4,8 @@
 
 ## Getting Started: in a web page
 
-Current major browsers are supported but not Internet Explorer (edit `targets` in `rollup.config.js` and run `npm run build` to change this).
+Current major browsers are supported but not Internet Explorer (edit `targets`
+in `rollup.config.js` and run `npm run build` to change this).
 
 Load the script from the CDN:
 

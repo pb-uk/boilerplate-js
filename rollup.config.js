@@ -9,14 +9,16 @@ import { terser } from 'rollup-plugin-terser';
 
 import pkg from './package.json';
 
-// Entry file(s) for build.
-const input = ['src/index.js'];
+// Minimum node.js version for CommonJS build.
+const node = '10'; // Until EOL 2021-04-30
+// const node = '12'; // Until EOL 2022-04-30
+// const node = '14'; // Until EOL 2023-04-30
 
 // Browserslist target for Browser and ES module build.
 const targets = '>0.25%, not dead, not IE 11';
 
-// Minimum node.js version for CommonJS build.
-const node = '10';
+// Entry file(s) for build.
+const input = ['src/index.js'];
 
 // External CommonJS modules.
 const external = [];
@@ -31,7 +33,7 @@ const banner = `/*! ${pkg.name} v${pkg.version} ${datetime}
 `;
 
 export default [
-  // browser-friendly UMD build
+  // browser-friendly iife build
   {
     input,
     output: [
