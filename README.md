@@ -40,6 +40,7 @@ const BoilerplateModule = require('boilerplate-module/dist/cjs');
 ```
 
 or import as an ES6 module:
+
 ```js
 // Default should work...
 import BoilerplateModule from 'boilerplate-module';

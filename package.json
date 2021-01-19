@@ -18,6 +18,8 @@
   "browser": "dist/boilerplate-module.min.js",
   "scripts": {
     "build": "npm run lint:fix && rollup -c",
+    "ci": "npm run lint && npm run test",
+    "lint": "eslint . && prettier . --check",
     "lint:fix": "eslint . --fix && prettier . --write",
     "test": "jest test"
   },
