@@ -1,3 +1,4 @@
 # .eslintignore
 
+# Distribution files.
 /dist/
