@@ -19,11 +19,13 @@
   "scripts": {
     "build": "npm run lint:fix && npm run build:build",
     "build:build": "rollup -c",
-    "ci": "npm run lint && npm run build:build && npm run test:tests",
+    "ci": "npm run lint && npm run build:build && npm run test:ci",
     "lint": "eslint . && prettier . --check",
     "lint:fix": "eslint . --fix && prettier . --write",
-    "test": "npm run build && npm run test:tests",
-    "test:tests": "jest test"
+    "test": "jest test --verbose",
+    "test:ci": "npm run test",
+    "test:func": "jest test/functional --verbose",
+    "test:unit": "jest test/unit --verbose"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
