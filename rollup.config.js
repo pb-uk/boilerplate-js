@@ -17,12 +17,14 @@ const node = '10'; // Until EOL 2021-04-30
 // Browserslist target for Browser and ES module build.
 const targets = '>0.25%, not dead, not IE 11';
 
+// External modules.
+const external = []; // e.g. ['axios'];
+const globals = {}; // e.g { axios: 'axios' };
+
 // Entry file(s) for build.
 const input = ['src/index.js'];
 
-// External CommonJS modules.
-const external = [];
-
+// Human timestamp for banner.
 const datetime = new Date().toISOString().substring(0, 19).replace('T', ' ');
 
 // Banner.
@@ -36,6 +38,7 @@ export default [
   // browser-friendly iife build
   {
     input,
+    external,
     output: [
       {
         banner,
@@ -44,6 +47,7 @@ export default [
         format: 'iife',
         esModule: false,
         sourcemap: true,
+        globals,
       },
     ],
     plugins: [
