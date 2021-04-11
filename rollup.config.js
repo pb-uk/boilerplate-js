@@ -2,10 +2,12 @@
 
 import camelCase from 'camelcase';
 import babel from '@rollup/plugin-babel';
-import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
-import resolve from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
+
+// Uncomment commonjs and/or resolve here and in plugins if required.
+// import commonjs from '@rollup/plugin-commonjs';
+// import resolve from '@rollup/plugin-node-resolve';
 
 import pkg from './package.json';
 
@@ -15,7 +17,7 @@ const node = '10'; // Until EOL 2021-04-30
 // const node = '14'; // Until EOL 2023-04-30
 
 // Browserslist target for Browser and ES module build.
-const targets = '>0.25%, not dead, not IE 11';
+const targets = '>0.25%, not dead, not IE 11, Firefox ESR';
 
 // External modules.
 const external = []; // e.g. ['axios'];
@@ -34,6 +36,12 @@ const banner = `/*! ${pkg.name} v${pkg.version} ${datetime}
  */
 `;
 
+const plugins = [
+  // resolve(), // so Rollup can find CommonJS modules.
+  // commonjs(), // so Rollup can convert CommonJS to ES modules.
+  json(),
+];
+
 export default [
   // browser-friendly iife build
   {
@@ -51,14 +59,14 @@ export default [
       },
     ],
     plugins: [
-      resolve(), // so Rollup can find CommonJS modules.
-      commonjs(), // so Rollup can convert CommonJS to ES modules.
+      ...plugins,
+
       babel({
         babelHelpers: 'bundled',
         presets: [['@babel/preset-env', { targets }]],
         exclude: 'node_modules/**',
       }),
-      json(),
+
       terser(),
     ],
   },
@@ -76,14 +84,13 @@ export default [
       },
     ],
     plugins: [
-      resolve(), // so Rollup can find CommonJS modules.
-      commonjs(), // so Rollup can convert CommonJS to ES modules.
+      ...plugins,
+
       babel({
         babelHelpers: 'bundled',
         presets: [['@babel/preset-env', { targets }]],
         exclude: 'node_modules/**',
       }),
-      json(),
     ],
   },
 
@@ -101,14 +108,13 @@ export default [
       },
     ],
     plugins: [
-      resolve(), // so Rollup can find CommonJS modules.
-      commonjs(), // so Rollup can convert CommonJS to ES modules.
+      ...plugins,
+
       babel({
         babelHelpers: 'bundled',
         presets: [['@babel/preset-env', { targets: { node } }]],
         exclude: 'node_modules/**',
       }),
-      json(),
     ],
   },
 ];
