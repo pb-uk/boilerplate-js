@@ -1,10 +1,10 @@
 // test/unit/index.test.js
 
 import { version } from '../../src/index';
-import { SEMVER } from '../helpers';
+const { version: pkgVersion } = require('../../package.json');
 
 describe('The boilerplate source code', () => {
-  it('should have a version', () => {
-    expect(version).toMatch(SEMVER);
+  it('should have the same version as package.json', () => {
+    expect(version).toBe(pkgVersion);
   });
 });
