@@ -23,7 +23,7 @@ The module is exported as `BoilerplateModule`:
 
 ## Getting Started: in Node.js
 
-Node >= 10 is currently supported in the distributed modules.
+Node >= 12 is currently supported in the distributed modules.
 
 Install from `npm`:
 

@@ -12,9 +12,9 @@ import { terser } from 'rollup-plugin-terser';
 import pkg from './package.json';
 
 // Minimum node.js version for CommonJS build.
-const node = '10'; // Until EOL 2021-04-30
-// const node = '12'; // Until EOL 2022-04-30
+const node = '12'; // Until EOL 2022-04-30
 // const node = '14'; // Until EOL 2023-04-30
+// const node = '16'; // Until EOL 2024-04-30
 
 // Browserslist target for Browser and ES module build.
 const targets = '>0.25%, not dead, not IE 11, Firefox ESR';

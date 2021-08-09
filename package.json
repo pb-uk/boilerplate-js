@@ -1,6 +1,6 @@
 {
   "name": "boilerplate-module",
-  "version": "0.1.2-dev",
+  "version": "0.1.3-dev",
   "description": "Boilerplate for a JavaScript module (browser + node).",
   "keywords": [
     "boilerplate"
@@ -31,7 +31,6 @@
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.2",
     "@rollup/plugin-babel": "^5.2.2",
-    "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "eslint": "^7.27.0",
@@ -40,5 +39,8 @@
     "prettier": "^2.3.0",
     "rollup": "^2.50.1",
     "rollup-plugin-terser": "^7.0.2"
+  },
+  "dependencies": {
+    "@rollup/plugin-commonjs": "^20.0.0"
   }
 }
