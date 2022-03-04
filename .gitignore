@@ -10,6 +10,9 @@
 !/dist/cjs
 /dist/cjs/*
 !/dist/cjs/package.json
+!/dist/esm
+/dist/esm/*
+!/dist/esm/package.json
 
 # Test reports.
 /coverage/
