@@ -16,21 +16,20 @@
   "files": [
     "dist"
   ],
-  "type": "module",
+  "type": "commonjs",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "browser": "dist/boilerplate-module.min.js",
   "scripts": {
     "build": "npm run lint:fix && npm run build:build",
     "build:build": "rollup -c",
-    "ci": "npm run lint && npm run build:build && npm run test:ci",
+    "ci": "npm run lint && npm run test:unit && npm run build:build && npm run test:dist",
     "lint": "eslint . && prettier . --check",
     "lint:fix": "eslint . --fix && prettier . --write",
     "test": "mocha test --recursive",
-    "test:ci": "npm run test",
     "test:coverage": "c8 --src=src --all --reporter=text --reporter=html npm run test:unit",
     "test:dist": "mocha test/dist --recursive",
-    "test:unit": "mocha --loader ts-node/esm --extensions ts,tsx 'test/unit/**/*.{ts,tsx}'"
+    "test:unit": "cross-env TS_NODE_COMPILER_OPTIONS='{ \"module\": \"commonjs\" }' mocha -r ts-node/register test/unit/**/*.{ts,tsx}"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.1",

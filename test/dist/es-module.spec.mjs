@@ -4,7 +4,7 @@ import { expect } from 'chai';
 
 import { readFileSync } from 'fs';
 
-import { version } from '../../src/index.js';
+import { version } from '../../dist/esm/index.js';
 
 const pkg = JSON.parse(readFileSync('./package.json', 'utf8'));
 
