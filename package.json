@@ -21,6 +21,7 @@
   "type": "commonjs",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
+  "sideEffects": false,
   "browser": "dist/template-ts.min.js",
   "scripts": {
     "build": "npm run lint:fix && npm run build:build",
@@ -34,6 +35,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-typescript": "^8.3.1",
     "@types/chai": "^4.3.0",

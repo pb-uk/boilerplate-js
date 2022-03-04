@@ -3,7 +3,7 @@
 import camelCase from 'camelcase';
 // import json from '@rollup/plugin-json';
 import { terser } from 'rollup-plugin-terser';
-import typescript from '@rollup/plugin-typescript';
+// import typescript from '@rollup/plugin-typescript';
 import { babel } from '@rollup/plugin-babel';
 
 // Uncomment commonjs and/or resolve here and in plugins if required.
@@ -13,14 +13,12 @@ import { babel } from '@rollup/plugin-babel';
 import pkg from './package.json';
 
 // Minimum node.js version for CommonJS build.
-// const node = '12'; // Until EOL 2022-04-30
-
+const node = '12'; // Until EOL 2022-04-30
 // const node = '14'; // Until EOL 2023-04-30
 // const node = '16'; // Until EOL 2024-04-30
 
 // Browserslist target for Browser and ES module build.
-// const targets = '>0.25%, not dead, not IE 11, Firefox ESR';
-const targets = '>0.25%, not dead, IE 11, Firefox ESR';
+const targets = '>0.25%, not dead, not IE 11, Firefox ESR';
 
 // External modules.
 const external = []; // e.g. ['axios'];
@@ -40,15 +38,19 @@ const banner = `/*! ${pkg.name} v${pkg.version} ${datetime}
 `;
 
 const plugins = [
+  /*
   typescript({
     compilerOptions: {
       // lib: ["es5", "es6", "dom"],
       // target: "es5"
     },
   }),
+  */
   // resolve(), // so Rollup can find CommonJS modules.
   // commonjs(), // so Rollup can convert CommonJS to ES modules.
 ];
+
+const extensions = ['js', 'jsx', 'ts', 'tsx'];
 
 export default [
   // browser-friendly iife build
@@ -68,7 +70,12 @@ export default [
     ],
     plugins: [
       ...plugins,
-      babel({ babelHelpers: 'bundled', targets }),
+      babel({
+        extensions,
+        presets: ['@babel/preset-typescript', ['@babel/preset-env', {}]],
+        babelHelpers: 'bundled',
+        targets,
+      }),
       terser(),
     ],
   },
@@ -85,7 +92,15 @@ export default [
         sourcemap: true,
       },
     ],
-    plugins: [...plugins, babel({ babelHelpers: 'bundled', targets })],
+    plugins: [
+      ...plugins,
+      babel({
+        extensions,
+        presets: ['@babel/preset-typescript', ['@babel/preset-env', {}]],
+        babelHelpers: 'bundled',
+        targets: { node },
+      }),
+    ],
   },
 
   // CommonJS (for Node) build.
@@ -101,6 +116,14 @@ export default [
         esModule: false,
       },
     ],
-    plugins: [...plugins, babel({ babelHelpers: 'bundled', targets })],
+    plugins: [
+      ...plugins,
+      babel({
+        extensions,
+        presets: ['@babel/preset-typescript'],
+        babelHelpers: 'bundled',
+        targets,
+      }),
+    ],
   },
 ];

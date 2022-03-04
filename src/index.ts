@@ -11,6 +11,15 @@ export const version = '0.3.0';
  */
 export const add = (a: number, b: number): number => a + b;
 
+export const bigOne = BigInt(1);
+
 export const isNullish = <T>(value: T): T | boolean => {
   return value ?? true;
 };
+/*
+export const waitForIt = async () => {
+  return await new Promise((resolve) => {
+    setTimeout(() => resolve(true));
+  });
+};
+*/
