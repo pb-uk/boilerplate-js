@@ -6,10 +6,8 @@
 /node_modules/
 
 # Distribution files.
-/dist/*
-!/dist/cjs
-/dist/cjs/*
-!/dist/cjs/package.json
+/dist/
+/types/
 !/dist/esm
 /dist/esm/*
 !/dist/esm/package.json
