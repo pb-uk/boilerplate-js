@@ -1,7 +1,7 @@
 {
   "name": "boilerplate-module",
-  "version": "0.2.0",
-  "description": "Boilerplate for a JavaScript module (browser + node).",
+  "version": "0.3.0",
+  "description": "Boilerplate for a TypeScript module (browser + node).",
   "keywords": [
     "boilerplate"
   ],
@@ -26,16 +26,16 @@
     "ci": "npm run lint && npm run test:unit && npm run build:build && npm run test:dist",
     "lint": "eslint . && prettier . --check",
     "lint:fix": "eslint . --fix && prettier . --write",
-    "test": "mocha test --recursive",
     "test:coverage": "c8 --src=src --all --reporter=text --reporter=html npm run test:unit",
     "test:dist": "mocha test/dist --recursive",
-    "test:unit": "cross-env TS_NODE_COMPILER_OPTIONS='{ \"module\": \"commonjs\" }' mocha -r ts-node/register test/unit/**/*.{ts,tsx}"
+    "test:unit": "cross-env TS_NODE_COMPILER_OPTIONS=\"{ \\\"module\\\": \\\"commonjs\\\" }\" mocha -r ts-node/register test/unit/**/*.{ts,tsx}"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.1",
     "@types/chai": "^4.3.0",
     "@types/mocha": "^9.1.0",
     "chai": "^4.3.6",
+    "cross-env": "^7.0.3",
     "eslint": "^8.10.0",
     "eslint-plugin-mocha": "^10.0.3",
     "mocha": "^9.2.1",
