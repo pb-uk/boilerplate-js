@@ -16,6 +16,9 @@ export const bigOne = BigInt(1);
 export const isNullish = <T>(value: T): T | boolean => {
   return value ?? true;
 };
+
+// Note that features requiring polyfills like regenerator-runtime will need
+// additional configuration to set up the iife bundle.
 /*
 export const waitForIt = async () => {
   return await new Promise((resolve) => {

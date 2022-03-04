@@ -3,7 +3,6 @@
 import camelCase from 'camelcase';
 // import json from '@rollup/plugin-json';
 import { terser } from 'rollup-plugin-terser';
-// import typescript from '@rollup/plugin-typescript';
 import { babel } from '@rollup/plugin-babel';
 
 // Uncomment commonjs and/or resolve here and in plugins if required.
@@ -38,14 +37,6 @@ const banner = `/*! ${pkg.name} v${pkg.version} ${datetime}
 `;
 
 const plugins = [
-  /*
-  typescript({
-    compilerOptions: {
-      // lib: ["es5", "es6", "dom"],
-      // target: "es5"
-    },
-  }),
-  */
   // resolve(), // so Rollup can find CommonJS modules.
   // commonjs(), // so Rollup can convert CommonJS to ES modules.
 ];
@@ -72,7 +63,11 @@ export default [
       ...plugins,
       babel({
         extensions,
-        presets: ['@babel/preset-typescript', ['@babel/preset-env', {}]],
+        presets: [
+          '@babel/preset-typescript',
+          // ['@babel/preset-env', { useBuiltIns: 'entry', corejs: '3.21' }],
+          '@babel/preset-env',
+        ],
         babelHelpers: 'bundled',
         targets,
       }),
@@ -96,7 +91,7 @@ export default [
       ...plugins,
       babel({
         extensions,
-        presets: ['@babel/preset-typescript', ['@babel/preset-env', {}]],
+        presets: ['@babel/preset-typescript', '@babel/preset-env'],
         babelHelpers: 'bundled',
         targets: { node },
       }),
@@ -120,9 +115,9 @@ export default [
       ...plugins,
       babel({
         extensions,
-        presets: ['@babel/preset-typescript'],
+        presets: ['@babel/preset-typescript', '@babel/preset-env'],
         babelHelpers: 'bundled',
-        targets,
+        targets: { node },
       }),
     ],
   },
