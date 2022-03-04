@@ -1,5 +1,3 @@
 // src/index.js
 
-import { version } from '../package.json';
-
-export { version };
+export const version = '0.2.0';

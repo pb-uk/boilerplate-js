@@ -1,12 +1,15 @@
 # .gitignore
 
 # Don't lock versions for a library.
-package-lock.json
+/package-lock.json
 
 /node_modules/
 
 # Distribution files.
-/dist/
+/dist/*
+!/dist/cjs
+/dist/cjs/*
+!/dist/cjs/package.json
 
 # Test reports.
 /coverage/

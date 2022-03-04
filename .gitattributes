@@ -1,4 +1,4 @@
 # .gitattributes
 
-# Fix line endings on Windows for consistent Prettier checking.
+# Fix line endings on Windows for consistent Prettier checking in CI.
 * text=auto eol=lf

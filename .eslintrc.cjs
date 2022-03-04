@@ -1,4 +1,4 @@
-// .eslintrc.js
+// .eslintrc.cjs
 
 module.exports = {
   env: {
@@ -14,9 +14,9 @@ module.exports = {
   rules: {},
   overrides: [
     {
-      files: ['**/*.{test,spec}.js'],
+      files: ['**/*.{test,spec}.{c,m,}js'],
       env: { jest: true },
-      extends: ['plugin:jest/recommended'],
+      extends: ['plugin:mocha/recommended'],
     },
   ],
 };

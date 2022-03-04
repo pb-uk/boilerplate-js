@@ -2,7 +2,7 @@
 
 import camelCase from 'camelcase';
 import babel from '@rollup/plugin-babel';
-import json from '@rollup/plugin-json';
+// import json from '@rollup/plugin-json';
 import { terser } from 'rollup-plugin-terser';
 
 // Uncomment commonjs and/or resolve here and in plugins if required.
@@ -39,7 +39,6 @@ const banner = `/*! ${pkg.name} v${pkg.version} ${datetime}
 const plugins = [
   // resolve(), // so Rollup can find CommonJS modules.
   // commonjs(), // so Rollup can convert CommonJS to ES modules.
-  json(),
 ];
 
 export default [
