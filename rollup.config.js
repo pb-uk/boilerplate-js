@@ -4,6 +4,7 @@ import camelCase from 'camelcase';
 // import json from '@rollup/plugin-json';
 import { terser } from 'rollup-plugin-terser';
 import typescript from '@rollup/plugin-typescript';
+import { babel } from '@rollup/plugin-babel';
 
 // Uncomment commonjs and/or resolve here and in plugins if required.
 // import commonjs from '@rollup/plugin-commonjs';
@@ -19,6 +20,7 @@ import pkg from './package.json';
 
 // Browserslist target for Browser and ES module build.
 // const targets = '>0.25%, not dead, not IE 11, Firefox ESR';
+const targets = '>0.25%, not dead, IE 11, Firefox ESR';
 
 // External modules.
 const external = []; // e.g. ['axios'];
@@ -64,7 +66,11 @@ export default [
         globals,
       },
     ],
-    plugins: [...plugins, terser()],
+    plugins: [
+      ...plugins,
+      babel({ babelHelpers: 'bundled', targets }),
+      terser(),
+    ],
   },
 
   // ES module (for bundlers) build.
@@ -79,7 +85,7 @@ export default [
         sourcemap: true,
       },
     ],
-    plugins: [...plugins],
+    plugins: [...plugins, babel({ babelHelpers: 'bundled', targets })],
   },
 
   // CommonJS (for Node) build.
@@ -95,6 +101,6 @@ export default [
         esModule: false,
       },
     ],
-    plugins: [...plugins],
+    plugins: [...plugins, babel({ babelHelpers: 'bundled', targets })],
   },
 ];

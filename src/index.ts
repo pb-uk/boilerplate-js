@@ -10,3 +10,7 @@ export const version = '0.3.0';
  * @returns The sum a + b.
  */
 export const add = (a: number, b: number): number => a + b;
+
+export const isNullish = <T>(value: T): T | boolean => {
+  return value ?? true;
+};
